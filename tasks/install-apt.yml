@@ -15,6 +15,15 @@
       - libxshmfence1
     state: '{{ visual_studio_code_package_state }}'
 
+# Required for Visual Studio Code account login on crostini.
+# See https://github.com/microsoft/vscode-docker/issues/1515.
+- name: install gnome-keyring for vscode on crostini
+  become: yes
+  apt:
+    name: gnome-keyring
+    state: present
+  when: ansible_facts['product_name'] == 'crosvm'
+
 - name: install key (apt)
   become: yes
   apt_key:
