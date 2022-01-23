@@ -8,5 +8,8 @@ visual_studio_code_config_path: "{{ (ansible_distribution == 'MacOSX') | ternary
 # The package name to install
 visual_studio_code_package: "{{ (visual_studio_code_build == 'insiders') | ternary('code-insiders', 'code') }}"
 
+# `visual_studio_code_package_state` but limited to either "present" or "absent".
+visual_studio_code_package_state_simple: "{{ (visual_studio_code_package_state == 'absent') | ternary(visual_studio_code_package_state, 'present') }}"
+
 # The CLI executable
 visual_studio_code_exe: "{{ (visual_studio_code_build == 'insiders') | ternary('code-insiders', 'code') }}"

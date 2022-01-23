@@ -8,7 +8,7 @@
       - libxshmfence
       - mesa-libgbm
       - which
-    state: present
+    state: '{{ visual_studio_code_package_state }}'
 
 - name: install VS Code repo (dnf)
   become: yes
@@ -25,4 +25,4 @@
   become: yes
   dnf:
     name: "{{ visual_studio_code_package }}{{ (visual_studio_code_version | length > 0) | ternary('-' + visual_studio_code_version, '') }}"
-    state: present
+    state: '{{ visual_studio_code_package_state }}'

@@ -3,7 +3,7 @@
   become: yes
   yum:
     name: which
-    state: present
+    state: '{{ visual_studio_code_package_state }}'
 
 - name: install VS Code repo (yum)
   become: yes
@@ -20,4 +20,4 @@
   become: yes
   yum:
     name: "{{ visual_studio_code_package }}{{ (visual_studio_code_version | length > 0) | ternary('-' + visual_studio_code_version, '') }}"
-    state: present
+    state: '{{ visual_studio_code_package_state }}'

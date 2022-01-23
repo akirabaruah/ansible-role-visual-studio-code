@@ -8,12 +8,12 @@
       - libxcb-dri3-0
       - libxshmfence1
       - which
-    state: present
+    state: '{{ visual_studio_code_package_state }}'
 
 - name: install key (zypper)
   become: yes
   rpm_key:
-    state: present
+    state: '{{ visual_studio_code_package_state_simple }}'
     key: '{{ visual_studio_code_mirror }}/keys/microsoft.asc'
 
 - name: write repo configuration (zypper)
@@ -30,4 +30,4 @@
   become: yes
   zypper:
     name: "{{ visual_studio_code_package }}{{ (visual_studio_code_version | length > 0) | ternary('=' + visual_studio_code_version, '') }}"
-    state: present
+    state: '{{ visual_studio_code_package_state }}'

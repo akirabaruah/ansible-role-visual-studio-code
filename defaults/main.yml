@@ -31,5 +31,8 @@ visual_studio_code_gpgcheck: yes
 # if set to no, the repo will be added, this is the default
 visual_studio_code_skip_add_repo: no
 
+# Desired package state (present, absent, latest).
+visual_studio_code_package_state: present
+
 # Users to install extensions for and/or write settings.json
 users: []
